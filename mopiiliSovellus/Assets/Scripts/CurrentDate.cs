@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CurrentDate : MonoBehaviour
 {
-    public TextMeshProUGUI aika;
+    public TextMeshProUGUI aika;//aika ja päiväteksti
     public TextMeshProUGUI paiva;
 
     void Start()
@@ -24,7 +24,7 @@ public class CurrentDate : MonoBehaviour
     
     void Update()
     {
-        aika.text = System.DateTime.Now.ToString("HH:mm");
-        paiva.text = System.DateTime.Now.DayOfWeek.ToString();
+        aika.text = System.DateTime.Now.ToString("HH:mm");//ottaa nykymaailman ajan ja se näkyy näytöllä.
+        paiva.text = System.DateTime.Now.DayOfWeek.ToString();//ottaa nykymaailman viikonpäivän ja se näkyy näytöllä.
     }
 }

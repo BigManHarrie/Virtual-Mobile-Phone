@@ -12,11 +12,13 @@ public class PlayerMovement : MonoBehaviour
     public Button buttonLeft;
     public Button buttonRight;
 
+
     void Start()
     {
+        // Haetaan Rigidbody2D komponentti
         rb = GetComponent<Rigidbody2D>();
 
-        // Update button listeners to use StartMoving with direction
+        // Päivitetään painikkeiden kuuntelijat käyttämään StartMoving funktiota, joka saa suunnan
         buttonUp.onClick.AddListener(() => StartMoving(Vector2.up));
         buttonDown.onClick.AddListener(() => StartMoving(Vector2.down));
         buttonLeft.onClick.AddListener(() => StartMoving(Vector2.left));
@@ -25,24 +27,44 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Apply movement to the player
+        // Liikutetaan pelaajaa
         rb.velocity = movement * moveSpeed;
 
-        // Rotate the player to face the movement direction
+        // Käännetään pelaajaa
         if (movement.magnitude > 0.1f)
         {
             float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
             rb.rotation = angle - 90f;
         }
+
+        // Liikutetaan näppäimistön avulla
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            StartMoving(Vector2.up);
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            StartMoving(Vector2.down);
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            StartMoving(Vector2.left);
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            StartMoving(Vector2.right);
+        }
     }
 
+    // Funktio joka aloittaa liikkumisen tiettyyn suuntaan
     public void StartMoving(Vector2 dir)
     {
         movement = dir;
     }
 
+    // Funktio joka pysäyttää pelaajan liikkumisen
     public void StopMoving()
     {
-        movement = Vector2.zero; // Stop moving
+        movement = Vector2.zero; // Pysäytä liikkuminen
     }
 }

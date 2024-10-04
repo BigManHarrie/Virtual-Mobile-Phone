@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DayHighlight : MonoBehaviour
 {
+    // Viittaukset tekstielementteihin, joissa jokaisen p‰iv‰n numero n‰ytet‰‰n
     public TextMeshProUGUI currentDayText;
     public TextMeshProUGUI dayonetext;
     public TextMeshProUGUI daytwotext;
@@ -38,23 +39,23 @@ public class DayHighlight : MonoBehaviour
     public TextMeshProUGUI daythirtytext;
     public TextMeshProUGUI daythirtyonetext;
 
-
+    // Kutsutaan, kun skripti alustetaan
     void Start()
     {
-
+        // Asetetaan currentDayText tekstikentt‰‰n nykyinen p‰iv‰
         currentDayText.text = System.DateTime.Now.Day.ToString();
 
-
+        // Kutsutaan funktiota, joka korostaa nykyisen p‰iv‰n
         HighlightCurrentDay();
     }
 
+    // Funktio, joka korostaa nykyisen p‰iv‰n muuttamalla sen v‰rin punaiseksi
     void HighlightCurrentDay()
     {
-
+        // Haetaan nykyinen p‰iv‰ (1ñ31) j‰rjestelm‰n kellosta
         int currentDay = System.DateTime.Now.Day;
 
-
-
+        // K‰ytet‰‰n switch-lauseketta nykyisen p‰iv‰n perusteella
         switch (currentDay)
         {
             case 1:
@@ -150,8 +151,6 @@ public class DayHighlight : MonoBehaviour
             case 31:
                 daythirtyonetext.color = Color.red;
                 break;
-
-
         }
     }
 }

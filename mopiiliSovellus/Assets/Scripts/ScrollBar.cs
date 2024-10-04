@@ -28,12 +28,12 @@ public class ScrollbarValueExample : MonoBehaviour
         if (Scrolled && scrollbarValue == 0.0f)
         {
             screenWidth = Screen.width;
-            int leveys = screenWidth / 14;
+            int leveys = screenWidth / 14;//laskee kuinka paljon pitää liikuttaa näyttöä.
             Scrolled = false;
             StartCoroutine(moveContent(leveys));
         }
     }
-    IEnumerator moveContent(int leveys)
+    IEnumerator moveContent(int leveys)//liikuttaa näyttöä tietyn verran
     {
         for (int i = 0; i < leveys; i++)
         {
@@ -41,7 +41,7 @@ public class ScrollbarValueExample : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
     }
-    IEnumerator moveContentBack(int leveys)//liikuttaa näyttöä
+    IEnumerator moveContentBack(int leveys)//liikuttaa näyttöä tietyn verran toiseen suuntaan
     {
         for (int i = 0; i < leveys; i++)
         {

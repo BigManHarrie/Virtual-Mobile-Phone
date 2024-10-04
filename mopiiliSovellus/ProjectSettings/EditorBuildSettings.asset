@@ -32,5 +32,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SnakeGamePlay.unity
     guid: a398fb4977b9d83498ed6c9949a09fc1
+  - enabled: 1
+    path: Assets/Scenes/DemonSnake.unity
+    guid: f955084c2fad65a49bf65b67792f194d
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 112d08699ab585d478f06382f5da5baf, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: cdf220dfa8ed27443a7ba58d2ce398d1, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 98760bfb7b22f9b4aaca0e39b059a30f, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 4eb16fa35123453429be32bbbef6666e, type: 2}

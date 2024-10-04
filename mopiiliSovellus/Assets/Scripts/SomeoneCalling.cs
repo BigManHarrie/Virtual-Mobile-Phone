@@ -77,14 +77,14 @@ public class SomeoneCalling : MonoBehaviour
     }
     public void AcceptCall()
     {
-        callingProfilePic.sprite = ProfilePic.sprite;
+        callingProfilePic.sprite = ProfilePic.sprite;//muuttaa profiilikuvan 
         callingName.text = Name.text;
         someOneCalling = true;
         Answering.SetActive(true);//muuttaa soiton n‰kyv‰ksi
         Calling.SetActive(false);
         Debug.Log("Someonecalling true");
         time = 0f;//resettaa ajan
-        if (callingProfilePic.sprite == Kuvat[0])
+        if (callingProfilePic.sprite == Kuvat[0])//ottaa randomilla yhden soittajan
         {
             StartCoroutine(RandomVoiceLineElmeri());
         }
@@ -96,7 +96,7 @@ public class SomeoneCalling : MonoBehaviour
     public void DeclineCall()
     {
         someOneCalling = false;
-        Calling.SetActive(false);
+        Calling.SetActive(false);//piilottaa Calling, eli soittokuvakkeen. Sama kun lopettaisi puhelun.
         Answering.SetActive(false);
     }
 
@@ -122,19 +122,19 @@ public class SomeoneCalling : MonoBehaviour
     }
     IEnumerator RandomVoiceLineJasper()
     {
-        print(linesJasper.Length);
+        print(linesJasper.Length);//debuggausta varten
         Debug.Log("RandomVoiceLine()");
         someOneCalling = true;
         while (someOneCalling == true)
         {
-            int i = Random.Range(0, linesJasper.Length);
+            int i = Random.Range(0, linesJasper.Length);//Valitsee random Voicelinen
             AudioSource audioSource = GetComponent<AudioSource>();
             audioSource.clip = linesJasper[i];
             audioSource.Play();
             float pituus = linesJasper[i].length;
             Debug.Log("VoiceLine");
-            yield return new WaitForSeconds(pituus + 2);
-            if (i == linesJasper.Length-1)
+            yield return new WaitForSeconds(pituus + 2);//odottaa kaksi sekunttia voicelinen j‰lkeen ett‰ tulee uusi voiceline
+            if (i == linesJasper.Length-1)//Jos voiceline on listan vika elikk‰ moikat, puhelu p‰‰ttyy
             {
                 DeclineCall();
             }

@@ -8,8 +8,8 @@ public class HomeScreenButtons : MonoBehaviour
 {
 
     public GameObject GoogleIMG;
-    public GameObject SlotsIMG;
-    float scaleSize = 1.12f;
+    public GameObject SlotsIMG;//slots- pelin kuva
+    float scaleSize = 1.12f; // Kokonaiskoko
 
 
 
@@ -21,7 +21,7 @@ public class HomeScreenButtons : MonoBehaviour
     {
         
     }
-    public void CameraB()//nappulalla voi lataa tietyn scenen
+    public void CameraB()//nappulalla voi lataa tietyn scenen. Scenejä on useita. Build settingeissä näkee mihin sceneen tietty numero vie
     {
         SceneManager.LoadSceneAsync(2);
     }
@@ -45,9 +45,13 @@ public class HomeScreenButtons : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(6);
     }
+    public void SnakeB()
+    {
+        SceneManager.LoadSceneAsync(7);
+    }
     IEnumerator LoadGoogle()
     {
-        for (int i = 0; i < 15; i++)//kasvattaa apin logon että se avautuu hienosti
+        for (int i = 0; i < 15; i++)//kasvattaa apin logon että se avautuu hienosti, ja avaa scenen
         {
             GoogleIMG.transform.localScale += new Vector3(scaleSize, scaleSize, scaleSize);
             yield return new WaitForSeconds(0.01f);
@@ -57,7 +61,7 @@ public class HomeScreenButtons : MonoBehaviour
     }
     IEnumerator LoadSlots()
     {
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 15; i++)//kasvattaa apin logon että se avautuu hienosti, ja avaa scenen
         {
             SlotsIMG.transform.localScale += new Vector3(scaleSize, scaleSize, scaleSize);
             yield return new WaitForSeconds(0.01f);

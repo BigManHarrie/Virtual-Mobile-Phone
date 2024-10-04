@@ -25,7 +25,7 @@ public class ButtonScript : MonoBehaviour
     {
     }
 
-    public void b1()//nappulat numeroille
+    public void b1()//nappulat numeroille. T‰m‰ on salasanan laittamiseen
     {
         salasana.text += "1";
         CheckPassword();
@@ -75,19 +75,19 @@ public class ButtonScript : MonoBehaviour
         salasana.text += "0";
         CheckPassword();
     }
-    public void BackSpace()
+    public void BackSpace()//poistaa numeron "Backspace" niinkuin tietokoneellakin
     {
         var pituus = salasana.text.Length;
         salasana.text = salasana.text.Remove(pituus - 1);
     }
-    public void CheckPassword()
+    public void CheckPassword()//tarkistaa onko salasana oikein vai viell‰ v‰‰rin
     {
         Debug.Log(salasana.text);
-        Debug.Log(PlayerPrefs.GetInt("salasana"));
+        Debug.Log(PlayerPrefs.GetInt("salasana"));//Ottaa salasanan playerPrefseist‰. Se on tallenettu sinne.
         if (salasana.text == PlayerPrefs.GetInt("salasana").ToString())//salasana on 6969
         {
             Debug.Log("Oikea Salasana");
-            SceneManager.LoadSceneAsync(1);
+            SceneManager.LoadSceneAsync(1);//lataa homeScenen
         }
     }
 }

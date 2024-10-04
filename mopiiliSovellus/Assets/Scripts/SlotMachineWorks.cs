@@ -217,7 +217,7 @@ public class SlotMachineWorks : MonoBehaviour
             creeperSound.Play();
         }else if (voittoKuva.sprite == kuvat[1])
         {
-            voitto = valiKasi * 2 * extraWin;
+            voitto = valiKasi * 2 * extraWin;//voittaa tietyn verran. Extrawin on suuri extrakerroin jos saa 3 samaa
             omaRaha += voitto;
             winSound.Play();
             VoittoSana.text = "+" + voitto;

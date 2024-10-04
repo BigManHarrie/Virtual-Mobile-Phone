@@ -11,7 +11,7 @@ public class PasswordUpdate : MonoBehaviour
     void Start()
     {
         Debug.Log(PlayerPrefs.GetInt("salasana"));
-        input.text = PlayerPrefs.GetInt("salasana").ToString();
+        input.text = PlayerPrefs.GetInt("salasana").ToString();//n‰ytt‰‰ nykyisen salasanan
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class PasswordUpdate : MonoBehaviour
     {
         int inputInt = Int32.Parse(input.text);
         
-        PlayerPrefs.SetInt("salasana", inputInt);
+        PlayerPrefs.SetInt("salasana", inputInt);//asettaa salasanan.
         Debug.Log(inputInt);
     }
 }

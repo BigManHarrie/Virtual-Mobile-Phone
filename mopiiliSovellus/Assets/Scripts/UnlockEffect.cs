@@ -16,7 +16,7 @@ public class HomeScreen : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Unlock sound AudioSource is not assigned in the Inspector.");
+                Debug.LogWarning("Unlock sound AudioSource is not assigned in the Inspector.");//debugging
             }
         }
     }
