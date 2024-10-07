@@ -69,8 +69,8 @@ public class LevelGrid : MonoBehaviour
 
     public void FoodCollected()
     {
-        burgerText.text = "Burgers: " + collectedFoods;
         collectedFoods++;
+        burgerText.text = "Burgers: " + collectedFoods;
         player.transform.localScale += new Vector3(0.3f, 1f, 0f);
         // Destroy the current food
         Destroy(currentFood);

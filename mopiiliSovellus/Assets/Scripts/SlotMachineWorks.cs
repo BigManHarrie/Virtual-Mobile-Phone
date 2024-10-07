@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SlotMachineWorks : MonoBehaviour
 {
@@ -26,8 +27,8 @@ public class SlotMachineWorks : MonoBehaviour
     public int sheetStart = -555;
 
     int extraWin = 1;// muuttujat voiton kertoimelle, pelaajan rahoille, panokselle ja voitolle
-    int omaRaha = 1000;
-    int betti = 100;
+    int omaRaha;
+    int betti = 5;
     int voitto = 0;
     public TextMeshProUGUI RahaSana;// Tekstikomponentit rahojen, panoksen ja voiton näyttämiseen
     public TextMeshProUGUI BetSana;
@@ -44,6 +45,15 @@ public class SlotMachineWorks : MonoBehaviour
 
     private void Start()
     {
+        omaRaha = PlayerPrefs.GetInt("Rahamaara");
+        if (omaRaha < 1)
+        {
+            omaRaha = 10;
+        }
+        PlayerPrefs.SetInt("Rahamaara", omaRaha);
+        
+        RahaSana.text = "Bank: " + omaRaha;
+        BetSana.text = "Bet: " + betti;
         LoadVolume();
     }
     public void LoadVolume()//lataa äänen kovuuden
@@ -53,10 +63,12 @@ public class SlotMachineWorks : MonoBehaviour
 
     public void playSlots()
     {
+        omaRaha = PlayerPrefs.GetInt("Rahamaara");
         if (omaRaha >= 1 && canSpin && omaRaha >= betti) // Tarkistaa, onko pelaajalla tarpeeksi rahaa ja voiko pelata
         {
             BetSana.text = "Bet: " + betti;// päivitä panos ja rahat
             omaRaha -= betti;
+            PlayerPrefs.SetInt("Rahamaara", omaRaha);
             RahaSana.text = "Bank: " + omaRaha;
             StartCoroutine(rotateHandleBar());//käynnistää rullien ja vivun pyörityksen
             StartCoroutine(moveSheets());
@@ -245,5 +257,10 @@ public class SlotMachineWorks : MonoBehaviour
         }
         RahaSana.text = "Bank: " + omaRaha;
         
+        PlayerPrefs.SetInt("Rahamaara", omaRaha);// Asettaa nykyisen rahamäärän muistiin
+        if (omaRaha == 666 || omaRaha == 666666 || omaRaha == 666666666)
+        {
+            SceneManager.LoadSceneAsync(9);
+        }
     }
 }
